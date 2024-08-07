@@ -2,8 +2,8 @@ package transaction
 
 import (
 	"context"
-	"github.com/jackc/pgx/v4"
 
+	"github.com/jackc/pgx/v4"
 	"github.com/pkg/errors"
 
 	db "github.com/VadimGossip/platform_common/pkg/db/postgres"
