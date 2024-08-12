@@ -5,6 +5,7 @@ import (
 
 	db "github.com/VadimGossip/platform_common/pkg/db/oracle"
 
+	//Go Driver for oracle DB
 	_ "github.com/godror/godror"
 )
 
