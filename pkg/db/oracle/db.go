@@ -18,6 +18,7 @@ type TxManager interface {
 
 type SQLExecer interface {
 	QueryContext(ctx context.Context, query string, args ...any) (*sql.Rows, error)
+	ExecContext(ctx context.Context, query string, args ...interface{}) (sql.Result, error)
 }
 
 type Transactor interface {
