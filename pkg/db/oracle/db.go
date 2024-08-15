@@ -13,6 +13,7 @@ type Client interface {
 }
 
 type TxManager interface {
+	ReadCommitted(ctx context.Context, f Handler) error
 	ReadSerializable(ctx context.Context, f Handler) error
 }
 
