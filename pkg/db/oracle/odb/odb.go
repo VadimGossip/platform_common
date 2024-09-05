@@ -33,6 +33,15 @@ func (o *odb) QueryContext(ctx context.Context, query string, args ...interface{
 	return o.dbc.QueryContext(ctx, query, args...)
 }
 
+func (o *odb) QueryRowContext(ctx context.Context, query string, args ...interface{}) *sql.Row {
+	tx, ok := ctx.Value(TxKey).(*sql.Tx)
+	if ok {
+		return tx.QueryRow(query, args...)
+	}
+
+	return o.dbc.QueryRowContext(ctx, query, args...)
+}
+
 func (o *odb) ExecContext(ctx context.Context, query string, args ...interface{}) (sql.Result, error) {
 	tx, ok := ctx.Value(TxKey).(*sql.Tx)
 	if ok {
