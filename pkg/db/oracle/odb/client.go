@@ -15,7 +15,6 @@ type odbClient struct {
 
 func New(dsn string) (db.Client, error) {
 	dbc, err := sql.Open("godror", dsn)
-
 	if err != nil {
 		return nil, err
 	}
