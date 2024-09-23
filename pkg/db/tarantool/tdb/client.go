@@ -4,18 +4,20 @@ import (
 	"context"
 	"time"
 
-	db "github.com/VadimGossip/drs_storage_tester/internal/client/db/tarantool"
 	"github.com/tarantool/go-tarantool/v2"
+
+	db "github.com/VadimGossip/platform_common/pkg/db/tarantool"
 )
 
 type tdbClient struct {
 	masterDBC db.DB
 }
 
-func New(ctx context.Context, dsn string) (db.Client, error) {
+func New(ctx context.Context, address, user, password string) (db.Client, error) {
 	dialer := tarantool.NetDialer{
-		Address: "192.168.244.157:3301",
-		User:    "guest",
+		Address:  address,
+		User:     user,
+		Password: password,
 	}
 	opts := tarantool.Opts{
 		Timeout: 1 * time.Second,

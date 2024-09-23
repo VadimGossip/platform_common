@@ -1,9 +1,9 @@
 package tdb
 
 import (
-	db "github.com/VadimGossip/drs_storage_tester/internal/client/db/tarantool"
-
 	"github.com/tarantool/go-tarantool/v2"
+
+	db "github.com/VadimGossip/platform_common/pkg/db/tarantool"
 )
 
 type tdb struct {
