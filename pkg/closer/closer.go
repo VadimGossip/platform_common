@@ -5,10 +5,9 @@ import (
 	"os"
 	"os/signal"
 	"sync"
-	"syscall"
 )
 
-var globalCloser = New(syscall.SIGTERM, syscall.SIGINT)
+var globalCloser = New()
 
 // Add adds `func() error` callback to the globalCloser
 func Add(f ...func() error) {
