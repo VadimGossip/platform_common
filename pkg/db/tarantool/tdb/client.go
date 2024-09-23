@@ -13,14 +13,21 @@ type tdbClient struct {
 	masterDBC db.DB
 }
 
-func New(ctx context.Context, address, user, password string) (db.Client, error) {
+type ClientOptions struct {
+	Addr     string
+	Username string
+	Password string
+	Timeout  time.Duration
+}
+
+func New(ctx context.Context, options ClientOptions) (db.Client, error) {
 	dialer := tarantool.NetDialer{
-		Address:  address,
-		User:     user,
-		Password: password,
+		Address:  options.Addr,
+		User:     options.Username,
+		Password: options.Password,
 	}
 	opts := tarantool.Opts{
-		Timeout: 1 * time.Second,
+		Timeout: options.Timeout,
 	}
 
 	conn, err := tarantool.Connect(ctx, dialer, opts)
