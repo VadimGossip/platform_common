@@ -8,7 +8,7 @@ import (
 	db "github.com/VadimGossip/platform_common/pkg/db/redis"
 )
 
-type odbClient struct {
+type rdbClient struct {
 	masterDBC db.DB
 }
 
@@ -30,16 +30,16 @@ func New(options *ClientOptions) db.Client {
 		ReadTimeout:  options.ReadTimeout,
 		WriteTimeout: options.WriteTimeout,
 	})
-	return &odbClient{
+	return &rdbClient{
 		masterDBC: NewDB(dbc),
 	}
 }
 
-func (c *odbClient) DB() db.DB {
+func (c *rdbClient) DB() db.DB {
 	return c.masterDBC
 }
 
-func (c *odbClient) Close() error {
+func (c *rdbClient) Close() error {
 	if c.masterDBC != nil {
 		return c.masterDBC.Close()
 	}

@@ -3,7 +3,6 @@ package odb
 import (
 	"context"
 	"database/sql"
-
 	db "github.com/VadimGossip/platform_common/pkg/db/oracle"
 )
 
